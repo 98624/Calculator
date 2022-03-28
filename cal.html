@@ -1,0 +1,296 @@
+<html>
+
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="cal.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <div class="cal">
+        <form>
+            <div class="input">
+                <div class="result">
+                    <label id="input1"></label>
+                </div>
+
+                <div class="result1">
+                    <label id="output"></label>
+                </div>
+            </div>
+
+            <!-- <div>
+                <input type="text" value="" class="input1" disabled>
+            </div> -->
+            <div>
+                <input type="button" value="C" class="button" onkeypress="clr()" onclick="clr()">
+                <input type="button" value="X" class="button" onkeypress="cancel()" onclick="cancel()">
+                <input type="button" value="%" class="button" onkeypress="mod()" onclick="mod()">
+                <input type="button" value="/" class="button" onkeypress="div()" onclick="div()">
+                <br>
+                <input type="button" value="7" class="button" onkeypress="Print(7)" onclick="Print(7)">
+                <input type="button" value="8" class="button" onkeypress="Print(8)" onclick="Print(8)">
+                <input type="button" value="9" class="button" onkeypress="Print(9)" onclick="Print(9)">
+                <input type="button" value="*" class="button" onclick="mul()">
+                <br>
+                <input type="button" value="4" class="button" onkeypress="Print(4)" onclick="Print(4)">
+                <input type="button" value="5" class="button" onkeypress="Print(5)" onclick="Print(5)">
+                <input type="button" value="6" class="button" onkeypress="Print(6)" onclick="Print(6)">
+                <input type="button" value="-" class="button" onclick="sub()">
+                <br>
+                <input type="button" value="1" class="button" onkeypress="Print(1)" onclick="Print(1)">
+                <input type="button" value="2" class="button" onkeypress="Print(2)" onclick="Print(2)">
+                <input type="button" value="3" class="button" onkeypress="Print(3)" onclick="Print(3)">
+                <input type="button" value="+" class="button" onclick="add()">
+                <br>
+              
+                <input type="button" value="0" class="button" onclick="Print(0)">
+                <input type="button" value="=" class="button1" onclick="equal()">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let num = ''
+        let temp = ''
+        let result = ''
+
+        function Print(value) {
+            num += value
+            document.getElementById('input1').innerHTML = num
+        }
+
+        function cancel() {
+            let a = document.getElementById('input1').innerText
+            a = a.slice(0, -1)
+            document.getElementById('input1').innerHTML = a
+            num = a
+        }
+
+        function clr() {
+            document.getElementById('input1').innerHTML = ''
+            document.getElementById('output').innerHTML = ''
+            temp = num
+            num = ''
+        }
+
+        function add() {
+            //let a = document.getElementById('output').innerText
+            let upper=document.getElementById('input1').innerText
+            let lower= document.getElementById('output').innerText
+            if (upper == '' && lower == '') 
+            { } 
+            
+            else if (upper != '' && lower == '')
+             {    
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} +` 
+                temp = num
+                num = ''
+            } 
+            else if (lower != '' && upper != '') {
+                result = parseInt(lower) + parseInt(upper)
+                temp = result
+                num = ''
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = result + ' +'
+
+            }
+            else if (lower == '') {
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} +`
+                temp = num
+                num = ''
+            }
+            else {
+                // let b = a.charAt(-1)
+                // temp += ' +'
+                document.getElementById('output').innerHTML = temp + ' +' // done
+            }
+
+        }
+
+
+        function sub() {
+            let upper=document.getElementById('input1').innerText
+            let lower= document.getElementById('output').innerText
+            if (upper == '' && lower == '') 
+            { } 
+            
+            else if (upper != '' && lower == '')
+             {    
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} -` 
+                temp = num
+                num = ''
+            } 
+            else if (lower != '' && upper != '') {
+                result = parseInt(lower) - parseInt(upper)
+                temp = result
+                num = ''
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = result + ' -'
+
+            }
+            else if (lower == '') {
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} -`
+                temp = num
+                num = ''
+            }
+            else {
+                // let b = a.charAt(-1)
+                // temp += ' +'
+                document.getElementById('output').innerHTML = temp + ' -' // done
+            }
+        }
+        function mul() {
+            let upper=document.getElementById('input1').innerText
+            let lower= document.getElementById('output').innerText
+            if (upper == '' && lower == '') 
+            { } 
+            
+            else if (upper != '' && lower == '')
+             {    
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} *` 
+                temp = num
+                num = ''
+            } 
+            else if (lower != '' && upper != '') {
+                result = parseInt(lower) * parseInt(upper)
+                temp = result
+                num = ''
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = result + ' *'
+
+            }
+            else if (lower == '') {
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} *`
+                temp = num
+                num = ''
+            }
+            else {
+                // let b = a.charAt(-1)
+                // temp += ' +'
+                document.getElementById('output').innerHTML = temp + ' *' // done
+            }
+        }
+        function div() {
+            let upper=document.getElementById('input1').innerText
+            let lower= document.getElementById('output').innerText
+            if (upper == '' && lower == '') 
+            { } 
+            
+            else if (upper != '' && lower == '')
+             {    
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} /` 
+                temp = num
+                num = ''
+            } 
+            else if (lower != '' && upper != '') {
+                result = parseInt(lower) / parseInt(upper)
+                temp = result
+                num = ''
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = result + ' /'
+
+            }
+            else if (lower == '') {
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} /`
+                temp = num
+                num = ''
+            }
+            else {
+                // let b = a.charAt(-1)
+                // temp += ' +'
+                document.getElementById('output').innerHTML = temp + ' /' // done
+            }
+        }
+        function mod() {
+            let upper=document.getElementById('input1').innerText
+            let lower= document.getElementById('output').innerText
+            if (upper == '' && lower == '') 
+            { } 
+            
+            else if (upper != '' && lower == '')
+             {    
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} %` 
+                temp = num
+                num = ''
+            } 
+            else if (lower != '' && upper != '') {
+                result = parseInt(lower) % parseInt(upper)
+                temp = result
+                num = ''
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = result + ' %'
+
+            }
+            else if (lower == '') {
+                document.getElementById('input1').innerHTML = ''
+                document.getElementById('output').innerHTML = `${num} %`
+                temp = num
+                num = ''
+            }
+            else {
+                // let b = a.charAt(-1)
+                // temp += ' +'
+                document.getElementById('output').innerHTML = temp + ' %' // done
+            }
+        }
+
+        function equal() {
+            Logic()
+
+        }
+
+        function Logic() {
+
+            let x = document.getElementById('output').innerText
+            let y = x.charAt(x.length - 1)
+            if (y == '+') {
+                result = parseInt(temp) + parseInt(num)
+                document.getElementById('output').innerHTML = result
+            }
+            else if (y == '-') {
+                result = parseInt(temp) - parseInt(num)
+                document.getElementById('output').innerHTML = result
+            }
+            else if (y == '/') {
+                // result = parseInt(temp) / parseInt(num)
+                // document.getElementById('output').innerHTML = result
+                // division()
+                let d = ''
+                d = document.getElementById('input1').innerText
+                if (d == '0') {
+                    let show = 'Error'
+                    document.getElementById('output').innerHTML = show
+                } else {
+                    result = parseInt(temp) / parseInt(num)
+                    document.getElementById('output').innerHTML = result
+                }
+            }
+            else if (y == '%') {
+                result = parseInt(temp) % parseInt(num)
+                document.getElementById('output').innerHTML = result
+            }
+            else if (y == '*') {
+                result = parseInt(temp) * parseInt(num)
+                document.getElementById('output').innerHTML = result
+            }
+            document.getElementById('input1').innerHTML = ''
+            num = ''
+        }
+
+
+    </script>
+</body>
+
+
+</html>
